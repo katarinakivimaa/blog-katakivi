@@ -1,0 +1,19 @@
+# puudub loogelised sulud, treppimine tähtis
+# docker-compose up -d (detached), exec web ls/pwd/bash, build (-d)
+# docker-compose stop, down (eemaldab konteineri), up (loob, vajalik esimesel korral), docker-compose start (käivitab kinni oleva konteineri)
+# ära tee muudatusi konteineri sees need resettivad, failid mis tulenevad arvutist töötavad
+# uuel arvutil php artisan migrate
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: blog
+    volumes:
+      - mm22dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  mm22dbdata:
