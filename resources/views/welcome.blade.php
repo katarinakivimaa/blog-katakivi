@@ -1,19 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="coffee">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>katakivi</title>
     @vite('resources/css/app.css')
 </head>
+
 <body>
-    <h1 class="text-3xl font-bold">heyo!!</h1>
-    <div class="flex space-x-4 m-4">
-        <button class="rounded-lg p-4 bg-rose-600 hover:bg-rose-800 focus:bg-rose-900 focus:outline-pink-500/50 " >Click Me!</button>
-        <button class="rounded-lg p-4 bg-rose-600 hover:bg-rose-800 focus:bg-rose-900 focus:outline-pink-500/50 " >Click Me!</button>
-        <button class="rounded-lg p-4 bg-rose-600 hover:bg-rose-800 focus:bg-rose-900 focus:outline-pink-500/50 " >Click Me!</button>
+    <div class="navbar bg-base-100">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    <li><a>Item 1</a></li>
+                    <li>
+                        <a>Parent</a>
+                        <ul class="p-2">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a>Item 3</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a>Item 1</a></li>
+                <li>
+                    <details>
+                        <summary>Parent</summary>
+                        <ul class="p-2">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li><a>Item 3</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a class="btn">Button</a>
+        </div>
+
     </div>
-    
+    </div>
+    <div class="container mx-auto">
+        <div class="grid-cols-4 grid grid-gap-4 gap-x-2">
+            {{-- < ?php for($i=0;$i<1;$i++): ? >
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Shoes!</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Buy Now</button>
+                    </div>
+
+                </div>
+            </div>
+            < ?php endfor; ? > --}}
+            @for($i=0;$i<12;$i++)
+                <div class="card bg-base-100 shadow-xl">
+                    <figure>
+                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                            alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Shoes! {{ $i }}</h2>
+                        {{-- < ?=$i? > --}}
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+
+                    </div>
+                </div>
+            @endfor
+        </div>
+        <button class="btn w-64 rounded-full">Yay!</button>
+    </div>
+
+
 </body>
+
 </html>
