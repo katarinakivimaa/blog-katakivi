@@ -57,6 +57,11 @@
     </div>
     </div>
     <div class="container mx-auto">
+        <div class="flex justify-center">
+            {{-- {{$posts->links('partials.pagination')}} --}}
+            {{$posts->links()}}
+        </div>
+        
         <div class="grid-cols-4 grid grid-gap-4 gap-x-2">
             {{-- < ?php for($i=0;$i<1;$i++): ? >
             <div class="card bg-base-100 shadow-xl">
@@ -74,23 +79,23 @@
                 </div>
             </div>
             < ?php endfor; ? > --}}
-            @for($i=0;$i<12;$i++)
+            @foreach($posts as $post)
                 <div class="card bg-base-100 shadow-xl">
                     <figure>
                         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                             alt="Shoes" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title">Shoes! {{ $i }}</h2>
+                        <h2 class="card-title">{{$post->title}}</h2>
                         {{-- < ?=$i? > --}}
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <p>{{$post->snippet}}</p>
                         <div class="card-actions justify-end">
                             <button class="btn btn-primary">Buy Now</button>
                         </div>
 
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
         <button class="btn w-64 rounded-full">Yay!</button>
     </div>
