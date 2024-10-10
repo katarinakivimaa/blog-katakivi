@@ -55,6 +55,9 @@
         </div>
     </div>
     <div class="container mx-auto">
+        <div class="flex justify-center">
+            {{ $posts->links() }}
+        </div>
         <div class="grid-cols-4 grid gap-4">
             @foreach($posts as $post)
                 <div>
