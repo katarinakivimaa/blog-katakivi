@@ -36,7 +36,27 @@
             <li><a>Item 3</a></li>
         </ul>
     </div>
-    <div class="navbar-end">
-        <a class="btn">Button</a>
+    <div class="navbar-end gap-2">
+        {{-- nagu if else statement aga authentification --}}
+        @auth
+        <ul class="menu menu-horizontal px-1">
+            <li>
+                <details>
+                    <summary>{{auth()->user->name}}</summary>
+                    <ul class="p-2">
+                        <li><a href="{{route('profile.edit')}}">Profile</a></li>
+                        <li><button form="logout">Logout</button></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+        <form id="logout" method="POST" action="{{route('logout')}}">
+            @csrf
+        </form>
+        @else
+        <a class="btn btn-secondary" href="{{route('register')}}">Register</a>
+        <a class="btn btn-primary" href="{{route('login')}}">Log in</a>
+        @endauth
+    </div>
     </div>
 </div>
