@@ -1,6 +1,6 @@
 @extends('partials.layout')
 @section('content')
-    <a href="" class="btn btn-primary">Add Post</a>
+    <a href="{{route('posts.create')}}" class="btn btn-primary">Add Post</a>
     <div class="flex justify-center">
         {{-- {{$posts->links('partials.pagination')}} --}}
         {{ $posts->links() }}
