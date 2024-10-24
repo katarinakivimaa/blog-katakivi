@@ -15,13 +15,13 @@
                     @enderror
                 </div>
             </label>
-            
+
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Content</span>
                 </div>
                 <textarea name="body"
-                          rows="12"  
+                          rows="12"
                           placeholder="Write something cool..."
                           class="textarea textarea-bordered w-full @error('body') textarea-error @enderror">{{ old('body') }}</textarea>
                 <div class="label">
@@ -32,7 +32,7 @@
             </label>
 
             <input type="submit" class="btn btn-primary" value="Create">
-
+            <a href="{{url()->previous()}}" class="btn btn-error">Cancel</a>
         </form>
     </div>
 </div>

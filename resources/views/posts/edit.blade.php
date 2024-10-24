@@ -34,7 +34,7 @@
             </label>
 
             <input type="submit" class="btn btn-primary" value="Update">
-
+            <a href="{{url()->previous()}}" class="btn btn-error">Cancel</a>
         </form>
     </div>
 </div>
