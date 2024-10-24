@@ -25,13 +25,21 @@
             @foreach($posts as $post)
                 <div class="card bg-base-100 shadow-xl min-h-full">
                     <figure>
-                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    @if($post->image)
+                        <figure>
+                            <img src="{{$post->image}}"
                             alt="Shoes" />
+                        </figure>
+                    @endif
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title">{{$post->title}}</h2>
                         {{-- < ?=$i? > --}}
                         <p>{{$post->snippet}}</p>
+                        <div class="tooltip w-fit text-neutral-content" data-tip={{$post->created_at}}>
+                            <p class="text-neutral-content">{{$post->created_at->diffForHumans()}}</p>
+                        </div>
+                        
                         <div class="card-actions justify-end">
                             <a href="{{route('post', ['post'=>$post])}}" class="btn btn-primary">Read More</a>
                             {{-- <a href="{{$post->id}}" class="btn btn-primary">Read More</a> --}}
