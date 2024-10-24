@@ -30,13 +30,8 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $imageName = md5($_FILES['image']['name'] . microtime() . rand(0, PHP_INT_MAX)) . '.' . $ext;
-        move_uploaded_file(
-            $_FILES['image']['tmp_name'],
-            __DIR__ . '/../../../storage/app/public/'. $imageName
-        );
         $post = new Post($request->validated());
+        dd($request->file('image')->store(public_path('')));
         $post->image = '/storage/' . $imageName;
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
