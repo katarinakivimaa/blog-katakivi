@@ -16,10 +16,20 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ $post->title }}</h2>
                         <p>{{ $post->snippet }}</p>
-                        <div class="tooltip w-fit" data-tip="{{ $post->created_at }}">
-                            <p class="text-neutral-content">{{ $post->created_at->diffForHumans() }}</p>
+                        <div class="flex flex-row">
+                            <div class="basis-1/2">
+                                <div class="tooltip w-fit" data-tip="{{ $post->created_at }}">
+                                    <p class="text-neutral-content">{{ $post->created_at->diffForHumans() }}</p>
+                                </div>
+                            </div>
+                            @if($post->created_at->notEqualTo($post->updated_at))
+                                <div class="basis-1/2 text-right">
+                                    <div class="tooltip w-fit" data-tip="{{ $post->updated_at }}">
+                                        <p class="text-neutral-content">Edited</p>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
-
                         <div class="card-actions justify-end">
                             <a href="{{route('post', ['post'=>$post])}}" class="btn btn-primary">Read More</a>
                         </div>
