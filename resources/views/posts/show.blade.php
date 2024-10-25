@@ -1,6 +1,6 @@
 @extends('partials.layout')
 @section('content')
-<a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
+    <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
     <table class="table table-zebra">
         <tbody>
             <tr>
@@ -25,5 +25,4 @@
             </tr>
         </tbody>
     </table>
-
 @endsection
