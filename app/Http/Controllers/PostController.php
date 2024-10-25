@@ -34,7 +34,7 @@ class PostController extends Controller
         $post = new Post($request->validated());
         if($request->has('image') && $request->file('image') !== null){
             $file = $request->file('image')->store('', ['disk' => 'public']);
-            $post->image = Storage::url($file);
+            $post->image = $file;
         }
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
@@ -67,7 +67,7 @@ class PostController extends Controller
 
         if($request->has('image') && $request->file('image') !== null){
             $file = $request->file('image')->store('', ['disk' => 'public']);
-            $post->image = Storage::url($file);
+            $post->image = $file;
         }
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
@@ -80,6 +80,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
         $post->delete();
         return redirect()->back();
     }
