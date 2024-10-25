@@ -32,8 +32,10 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $post = new Post($request->validated());
-        $file = $request->file('image')->store('', ['disk' => 'public']);
-        $post->image = Storage::url($file);
+        if($request->has('image') && $request->file('image') !== null){
+            $file = $request->file('image')->store('', ['disk' => 'public']);
+            $post->image = Storage::url($file);
+        }
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
         $post->save();
@@ -62,6 +64,11 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $post->fill($request->validated());
+
+        if($request->has('image') && $request->file('image') !== null){
+            $file = $request->file('image')->store('', ['disk' => 'public']);
+            $post->image = Storage::url($file);
+        }
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
         $post->save();
