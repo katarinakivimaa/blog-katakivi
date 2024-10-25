@@ -22,6 +22,8 @@
                 @endif
             </div>
 
+            <p class="text-neutral-content">{{ $post->user->name }}</p>
+
 
 
 

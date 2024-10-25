@@ -12,6 +12,10 @@
                 <td>{{$post->title}}</td>
             </tr>
             <tr>
+                <th>Author</th>
+                <td>{{$post->user->name}}</td>
+            </tr>
+            <tr>
                 <th>Content</th>
                 <td>{{$post->body}}</td>
             </tr>

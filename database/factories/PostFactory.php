@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -30,6 +31,7 @@ class PostFactory extends Factory
             'title'=>fake()->sentence(),
             'body' => fake()->paragraphs(7, true),
             'image' => $image,
+            // 'user_id' => User::select(['id'])inRandomOrder()->first()->id,
             'created_at' => $created,
             'updated_at' => $updated,
             // 'created_at' => fake()->dateTimeBetween('-10 years'),
