@@ -49,4 +49,8 @@ class Post extends Model
             Storage::disk('public')->delete($post->imageFile);
         });
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -30,6 +30,9 @@
                                 </div>
                             @endif
                         </div>
+
+                        <p class="text-neutral-content">{{ $post->user->name }}</p>
+
                         <div class="card-actions justify-end">
                             <a href="{{route('post', ['post'=>$post])}}" class="btn btn-primary">Read More</a>
                         </div>

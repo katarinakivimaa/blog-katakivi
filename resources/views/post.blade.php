@@ -21,6 +21,7 @@
                     </div>
                 @endif
             </div>
+            <p class="text-neutral-content">{{ $post->user->name }}</p>
             <div class="card-actions justify-end">
 
             </div>

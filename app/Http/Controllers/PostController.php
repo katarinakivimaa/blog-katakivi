@@ -38,6 +38,7 @@ class PostController extends Controller
         }
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
+        $post->user()->associate(auth()->user());
         $post->save();
         return redirect()->route('posts.index');
     }
