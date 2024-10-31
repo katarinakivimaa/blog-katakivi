@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\UnauthorizedException;
 
@@ -50,6 +51,9 @@ class PostController extends Controller
         // $post->body = $request->input('body');
         $post->user()->associate(auth()->user());
         $post->save();
+        foreach($request->input('tags') as $id){
+            $post->tags()->attach($id);
+        }
         return redirect()->route('posts.index');
     }
 
@@ -58,6 +62,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $tags = Tag::all();
         return view('posts.show', compact('post'));
     }
 
@@ -66,7 +71,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $tags = Tag::all();
+        return view('posts.edit', compact('post','tags'));
     }
 
     /**
@@ -81,6 +87,13 @@ class PostController extends Controller
             $post->image = $file;
         }
         $post->save();
+        $post->tags()->sync($request->input('tags'));
+        // foreach($post->tags as $tag){
+        //     $post->tags()->detach($tag);
+        // }
+        // foreach($request->input('tags') as $id){
+        //     $post->tags()->attach($id);
+        // }
         return redirect()->route('posts.index');
     }
 

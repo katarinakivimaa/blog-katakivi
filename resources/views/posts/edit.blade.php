@@ -43,6 +43,23 @@
                     @enderror
                 </div>
             </label>
+            <label class="form-control w-full max-w-xs">
+                <div class="label">
+                  <span class="label-text">Pick the best fantasy franchise</span>
+                  {{-- <span class="label-text-alt">Alt label</span> --}}
+                </div>
+                <select name="tags[]" size="{{$tags->count()}}" multiple class="select select-bordered">
+                  {{-- <option disabled selected>Pick tags</option> --}}
+                  @foreach ($tags as $tag)
+                    <option @if($post->tags->contains($tag)) selected @endif value="{{$tag->id}}">{{$tag->name}}</option>
+                @endforeach
+                </select>
+                <div class="label">
+                  @error('tags')
+                    <span class="label-text-alt text-error">{{$message}}<span>
+                    @enderror
+                </div>
+              </label>
             <input type="submit" class="btn btn-primary" value="Update">
             <a href="{{url()->previous()}}" class="btn btn-error">Cancel</a>
         </form>

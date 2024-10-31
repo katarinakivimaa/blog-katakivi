@@ -51,7 +51,12 @@
                     </div>
 
                     <p class="text-neutral-content">{{ $post->user->name }}</p>
-
+                    <p class="text-neutral-content">Comments: {{ $post->comments()->count() }}</p>
+                    <div class="flex flex-wrap gap-1">
+                        @foreach ($post->tags as $tag)
+                        <div class="badge badge-primary badge-outline">{{$tag->name}}</div>
+                        @endforeach
+                    </div>
                     <div class="card-actions justify-end">
                         <a href="{{ route('post', ['post' => $post]) }}" class="btn btn-primary">Read More</a>
                         {{-- <a href="{{$post->id}}" class="btn btn-primary">Read More</a> --}}

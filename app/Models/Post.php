@@ -35,7 +35,7 @@ class Post extends Model
 
     public function image(): Attribute {
         return Attribute::get(function() {
-            if(parse_url($this->original['image'], PHP_URL_SCHEME) !== null) {
+            if(parse_url($this->original['image'], PHP_URL_SCHEME) !== null || !$this->original['image']) {
                 return $this->original['image'];
             } else {
                 return Storage::url($this->original['image']);
@@ -54,6 +54,10 @@ class Post extends Model
     }
 
     public function comments(){
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->latest();
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
     }
 }
