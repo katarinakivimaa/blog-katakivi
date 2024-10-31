@@ -6,15 +6,24 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\UnauthorizedException;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        if(request()->route('post') && request()->route('post')->user->id !== auth()->user()->id) {
+            abort(404); //tegelt 403 aga info mitte väljastamiseks ära anna midagi
+        }
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::latest()->paginate();
+        $posts = auth()->user()->posts()->latest()->paginate();
+        // $posts = Post::where('user_id',auth()->user()->id)->latest()->paginate();
         return view('posts.index', compact('posts'));
     }
 

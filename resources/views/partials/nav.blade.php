@@ -25,6 +25,7 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
             {{-- <li><a>Item 1</a></li> --}}
+            @auth
             <li>
                 <details>
                     <summary>Admin</summary>
@@ -33,6 +34,7 @@
                     </ul>
                 </details>
             </li>
+            @endauth
             {{-- <li><a>Item 3</a></li> --}}
         </ul>
     </div>

@@ -16,7 +16,7 @@ services:
     volumes:
       - mm22dbdata:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 33061:3306
   mailhog:
     image: mailhog/mailhog
     ports:
