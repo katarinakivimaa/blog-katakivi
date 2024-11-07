@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Like;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -30,4 +31,20 @@ class PublicController extends Controller
        }
        return redirect()->back();
     }
+
+    public function user(User $user){
+        $posts = $user->posts()->withCount('comments', 'likes')->latest()->simplePaginate(16);
+        return view('user', compact('posts', 'user'));
+    }
+
+    public function follow(User $user){
+        $followee = auth()->user()->followees()->where('followee_id', $user->id)->first();
+        if($followee){
+            auth()->user()->followees()->detach($user);
+        } else {
+            auth()->user()->followees()->attach($user);
+        }
+        return redirect()->back();
+     }
+
 }

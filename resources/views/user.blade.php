@@ -1,5 +1,25 @@
 @extends('partials.layout')
 @section('content')
+    <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <p class="text-2xl">{{$user->name}}</p>
+            <p>Comments: {{$user->comments()->count()}}</p>
+            <p>Posts: {{$user->posts()->count()}}</p>
+            <p>Likes: {{$user->likes()->count()}}</p>
+            <p>Likes on Posts: {{$user->likesOnPosts()->count()}}</p>
+            <p>Comments on Posts: {{$user->commentsOnPosts()->count()}}</p>
+            <p>Followers: {{$user->followers()->count()}}</p>
+            <p>Followees: {{$user->followees()->count()}}</p>
+            <form action="{{route('follow', ['user' => $user])}}" method="POST">
+                @csrf
+                @if($user->authHasFollowed)
+                    <button class="btn btn-secondary">Unfollow</button>
+                @else
+                    <button class="btn btn-primary">Follow</button>
+                @endif
+            </form>
+        </div>
+    </div>
     <div class="flex justify-center">
         {{ $posts->links() }}
     </div>
