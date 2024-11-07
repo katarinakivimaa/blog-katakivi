@@ -33,6 +33,15 @@
 
                         <p class="text-neutral-content">{{ $post->user->name }}</p>
                         <p class="text-neutral-content">Comments: {{ $post->comments_count }}</p>
+                        <p class="text-neutral-content">Likes: {{ $post->likes_count }}</p>
+                        <form action="{{ route('like', ['post' => $post]) }}" method="POST">
+                            @csrf
+                            @if($post->authHasLiked)
+                                <button class="btn btn-secondary">Unlike</button>
+                            @else
+                                <button class="btn btn-primary">Like</button>
+                            @endif
+                        </form>
                         <div class="flex flex-wrap gap-1">
                             @foreach ($post->tags as $tag)
                                 <div class="badge badge-primary badge-outline">{{$tag->name}}</div>

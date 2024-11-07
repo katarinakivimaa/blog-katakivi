@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/post/{post}', [PublicController::class, 'post'])->name('post');
+Route::post('/post/{post}/like', [PublicController::class, 'like'])->name('like');
 
 Route::middleware(['auth', 'verified'])->group(function (){
     // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');
