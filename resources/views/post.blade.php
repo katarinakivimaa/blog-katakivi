@@ -28,6 +28,27 @@
         </div>
     </div>
 
+    <div class="card bg-base-200 shadow-xl min-h-full mb-2">
+        <div class="card-body ">
+            <form action="{{route('comment', ['post' => $post])}}" method="POST">
+                @csrf
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Comment</span>
+                    </div>
+                    <textarea name="body" rows="4" placeholder="Write something cool..."
+                        class="textarea textarea-bordered w-full @error('body') textarea-error @enderror">{{ old('body') }}</textarea>
+                    <div class="label">
+                        @error('body')
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </label>
+                <input type="submit" class="btn btn-primary" value="Comment">
+            </form>
+        </div>
+    </div>
+
     @foreach($post->comments as $comment)
         <div class="card bg-base-200 shadow-xl min-h-full mb-2">
             <div class="card-body ">
