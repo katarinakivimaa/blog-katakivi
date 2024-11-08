@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/post/{post}', [PublicController::class, 'post'])->name('post');
+Route::post('/post/{post}/like', [PublicController::class, 'like'])->name('like');
+Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
+Route::post('/user/{user}/follow', [PublicController::class, 'follow'])->name('follow');
 
-Route::middleware(['auth','verified'])->group(function (){
+Route::middleware(['auth', 'verified'])->group(function (){
     // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');
     // Route::get('/admin/posts/create', [PostController::class, 'create'])->name('posts.create');
     // Route::post('/admin/posts', [PostController::class, 'store'])->name('posts.store');

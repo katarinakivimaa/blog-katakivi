@@ -23,10 +23,9 @@ class CommentFactory extends Factory
         }
 
         return [
-            'body'=>fake()->sentences(3,true),
-            'created_at'=> $created,
-            'updated'=> $updated,
-
+            'body' => fake()->sentences(3, true),
+            'created_at' => $created,
+            'updated_at' => $updated,
         ];
     }
 }

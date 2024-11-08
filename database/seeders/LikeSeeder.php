@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CommentSeeder extends Seeder
+class LikeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,10 @@ class CommentSeeder extends Seeder
         $posts = Post::select('id')->get();
         $users = User::select('id')->get();
         foreach($posts as $post){
-            Comment::factory(rand(0,20))->create(['post_id' => $post->id, 'user_id' => $users->random()->id]);
+            $randUsers = $users->random(rand(0, $users->count()));
+            foreach($randUsers as $user){
+                Like::factory(1)->create(['post_id' => $post->id, 'user_id' => $user->id]);
+            }
         }
     }
 }

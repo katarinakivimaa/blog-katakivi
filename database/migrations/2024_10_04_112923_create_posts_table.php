@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('image')->nullable();
+            $table->string('slug');
             // $table->unsignedBigInteger('user_id');
             // $table->foreign('user_id')->refereces('id')->on('users')->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
