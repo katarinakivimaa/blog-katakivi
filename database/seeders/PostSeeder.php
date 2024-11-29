@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,12 +14,11 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::select(['id'])->get();
-        $categories = Category::select(['id'])->get();
-        Post::factory(1000)->make()->sortBy('created_at')->each(function ($post) use ($users, $categories) {
+        $users = User::select(['id'])->get();   
+        Post::factory(1000)->make()->sortBy('created_at')->each(function ($post) use($users){
             $post->user_id = $users->random()->id;
-            $post->category_id = $categories->random()->id;
             $post->save();
         });
     }
 }
+ 

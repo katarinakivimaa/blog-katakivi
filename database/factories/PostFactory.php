@@ -17,6 +17,7 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+
         $created = fake()->dateTimeBetween('-10 years');
         $updated = fake()->dateTimeBetween($created);
         if(rand(0,9)){
@@ -24,15 +25,17 @@ class PostFactory extends Factory
         }
         $image = null;
         if(rand(0,9)){
-           $image = 'https://picsum.photos/seed/'. fake()->uuid() .'/1280/720';
+            $image = 'https://picsum.photos/seed/'. fake()->uuid() .'/1280/720';
         }
         return [
-            'title' => fake()->sentence(),
-            'body' => fake()->paragraphs(6, true),
+            'title'=>fake()->sentence(),
+            'body' => fake()->paragraphs(7, true),
             'image' => $image,
-            //'user_id' => User::select(['id'])->inRandomOrder()->first()->id,
+            // 'user_id' => User::select(['id'])inRandomOrder()->first()->id,
             'created_at' => $created,
             'updated_at' => $updated,
+            // 'created_at' => fake()->dateTimeBetween('-10 years'),
+            // 'updated_at' => fake()->dateTimeBetween('-10 years'),
         ];
     }
 }

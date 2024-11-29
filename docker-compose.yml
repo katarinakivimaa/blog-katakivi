@@ -1,3 +1,11 @@
+# puudub loogelised sulud, treppimine tähtis
+# docker-compose up -d (detached), exec web ls/pwd/bash, build (-d)
+# docker-compose stop, down (eemaldab konteineri), up (loob, vajalik esimesel korral), docker-compose start (käivitab kinni oleva konteineri)
+# ära tee muudatusi konteineri sees need resettivad, failid mis tulenevad arvutist töötavad
+# uuel arvutil php artisan migrate
+# ./artisan või php artisan
+# php artisan serve
+# kui gitist tõmbad siis tuleb key error, kasuta php artisan key:generate, krüpeerib sessioone, ei tohi teistele kättesaadav olla
 services:
   db:
     image: mariadb
@@ -8,11 +16,12 @@ services:
     volumes:
       - mm22dbdata:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 33061:3306
   mailhog:
     image: mailhog/mailhog
     ports:
       - 1025:1025
       - 8025:8025
+
 volumes:
   mm22dbdata:
