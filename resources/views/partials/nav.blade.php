@@ -44,7 +44,7 @@
         <ul class="menu menu-horizontal px-1">
             <li>
                 <details>
-                    <summary>{{auth()->user->name}}</summary>
+                    <summary>{{auth()->user()->name}}</summary>
                     <ul class="p-2">
                         <li><a href="{{route('profile.edit')}}">Profile</a></li>
                         <li><button form="logout">Logout</button></li>
