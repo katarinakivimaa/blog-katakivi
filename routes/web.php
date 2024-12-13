@@ -4,12 +4,17 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/post/{post}', [PublicController::class, 'post'])->name('post');
 Route::post('/post/{post}/like', [PublicController::class, 'like'])->name('like');
 Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
 Route::post('/user/{user}/follow', [PublicController::class, 'follow'])->name('follow');
+Route::get('/category/{category}', [PublicController::class, 'category'])->name('category');
+Route::get('/tag/{tag}', [TagController::class, 'show'])->name('tag.show');
+
 
 Route::middleware(['auth', 'verified'])->group(function (){
     // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');

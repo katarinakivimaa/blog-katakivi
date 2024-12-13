@@ -37,7 +37,8 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        $posts = $tag->posts()->withCount('comments', 'likes')->latest()->simplePaginate(16);
+    return view('welcome', compact('posts'))->with('title', $tag->name);
     }
 
     /**
