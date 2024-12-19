@@ -13,7 +13,7 @@ Route::post('/post/{post}/like', [PublicController::class, 'like'])->name('like'
 Route::get('/user/{user}', [PublicController::class, 'user'])->name('user');
 Route::post('/user/{user}/follow', [PublicController::class, 'follow'])->name('follow');
 Route::get('/category/{category}', [PublicController::class, 'category'])->name('category');
-Route::get('/tag/{tag}', [TagController::class, 'show'])->name('tag.show');
+Route::get('/tag/{tag}', [PublicController::class, 'tag'])->name('tag');
 
 
 Route::middleware(['auth', 'verified'])->group(function (){

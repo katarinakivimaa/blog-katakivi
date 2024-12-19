@@ -13,6 +13,7 @@
                         <p class="text-neutral-content">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
+      
                 @if($post->created_at->notEqualTo($post->updated_at))
                     <div class="basis-1/2 text-right">
                         <div class="tooltip w-fit" data-tip="{{ $post->updated_at }}">

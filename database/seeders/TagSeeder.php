@@ -15,7 +15,7 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $tags = Tag::factory(20)->create();
-        $posts = Post::factory(20)->create();
+        $posts = Post::all();
         foreach($posts as $post){
             $randTags = $tags->random(rand(0,$tags->count()));
             foreach($randTags as $tag){
